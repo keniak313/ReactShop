@@ -227,14 +227,14 @@ function CartItem({ item }) {
           onClick={() => navigateToItem(item.product.id)}
         ></Img>
         <Title>{item.product.title}</Title>
-        <Price>{item.product.price * item.quantity}$</Price>
+        <Price>{Number((item.product.price * item.quantity).toFixed(2))}$</Price>
         <Quantity amount={amount} setAmount={setAmount} />
         <Remove
           onClick={() => {
             removeFromCart();
           }}
         >
-          <i class="bx bx-trash"></i>
+          <i className="bx bx-trash"></i>
         </Remove>
       </div>
     </StyledCartItem>
