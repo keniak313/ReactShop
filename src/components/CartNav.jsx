@@ -96,7 +96,7 @@ export default function CartNav({ onClick, cart, scroll }) {
           setOpenPrev(false);
         }}
       >
-        <i class="bx bx-cart"></i> <p>{cartSizeHandler()}</p>
+        <i className="bx bx-cart"></i> <p>{cartSizeHandler()}</p>
       </StyledNavLink>
       <CartPreview cart={cart} isOpen={openPrev}>
         {cart.map((i) => {
@@ -189,7 +189,7 @@ function CartPreview({ children, cart, isOpen }) {
     <CartPreviewWrapper>
       <CartPrevInner className={isOpen && "openPrev"}>
         <Arrow>
-          <i class="bx bxs-up-arrow"></i>
+          <i className="bx bxs-up-arrow"></i>
         </Arrow>
         <div>My Cart</div>
         <Separator />

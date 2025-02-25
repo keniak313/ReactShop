@@ -65,7 +65,7 @@ export default function AddToCart({ id, isSmall = false, amount = 1, ...props })
   }
   return (
     <ImportantButton {...props} onClick={(e) => cartHandler(e)}>
-      <i class="bx bx-cart-download"></i>
+      <i className="bx bx-cart-download"></i>
       {isSmall ? `` : `Add to cart`}
     </ImportantButton>
   );

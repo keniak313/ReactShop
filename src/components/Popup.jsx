@@ -124,7 +124,7 @@ function PopupItem({ name, img }) {
       onAnimationEnd={() => close()}
     >
       <p>
-        New item added to cart.<i class="bx bx-cart-download"></i>
+        New item added to cart.<i className="bx bx-cart-download"></i>
       </p>
       <img src={img}></img>
     </StyledPopup>
