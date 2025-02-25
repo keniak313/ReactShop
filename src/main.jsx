@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../node_modules/modern-normalize/modern-normalize.css";
 import Theme from "./styles/GlobalStyles";
-import Root, { loader as shopLoader } from "./routes/root";
+import Root, { loader as shopLoader } from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 import Shop from "./routes/Shop";
 import Cart from "./routes/Cart";
