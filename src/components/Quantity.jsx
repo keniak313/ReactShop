@@ -28,11 +28,11 @@ export default function Quantity({ amount, setAmount, ...props }) {
   return (
     <Wrapper {...props}>
       <Button onClick={() => amount > 1 && setAmount((amount) => amount - 1)} disabled={amount === 1 ? true : false}>
-        <i class="bx bx-minus"></i>
+        <i className="bx bx-minus"></i>
       </Button>
       <Number>{amount}</Number>
       <Button onClick={() => setAmount((amount) => amount + 1)}>
-        <i class="bx bx-plus"></i>
+        <i className="bx bx-plus"></i>
       </Button>
     </Wrapper>
   );
