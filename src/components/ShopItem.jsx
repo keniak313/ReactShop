@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import AddToCartBase from "./AddToCart";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   width: 200px;
@@ -78,15 +79,7 @@ const Price = styled.p`
   font-size: ${(props) => props.theme.fontSizes.large};
 `;
 
-export default function ShopItem({
-  name,
-  desc,
-  img,
-  price,
-  category,
-  onClick,
-  id,
-}) {
+export default function ShopItem({ name, img, price, category, onClick, id }) {
   return (
     <Wrapper id={id}>
       <Content onClick={onClick}>
@@ -98,4 +91,13 @@ export default function ShopItem({
       <AddToCart id={id} isSmall={true} />
     </Wrapper>
   );
+}
+
+ShopItem.propTypes = {
+  name: PropTypes.string,
+  img: PropTypes.string,
+  price: PropTypes.string,
+  category: PropTypes.string,
+  onClick: PropTypes.func,
+  id: PropTypes.string,
 }

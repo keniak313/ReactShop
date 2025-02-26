@@ -6,6 +6,7 @@ import styled, {
 
 import { Link as LinkBase } from "react-router-dom";
 import { NavLink as BaseNavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const GlobalStyles = createGlobalStyle`
   *{
@@ -150,3 +151,7 @@ const Theme = ({ children }) => {
 };
 
 export default Theme;
+
+Theme.propTypes ={
+  children: PropTypes.node,
+}

@@ -1,17 +1,11 @@
 import styled from "styled-components";
-import { useImmer } from "use-immer";
-import { useContext, useEffect, useRef } from "react";
+
+import { useContext } from "react";
 
 import { FadeIn } from "../styles/GlobalStyles";
 
 import ShopItem from "../components/ShopItem";
-import {
-  useLoaderData,
-  useNavigate,
-  useLocation,
-  generatePath,
-  useOutletContext,
-} from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { GlobalContext } from "../components/GlobalContext";
 
 const Wrapper = styled.section`
@@ -27,7 +21,7 @@ const Wrapper = styled.section`
 
 export default function Shop() {
   const { products } = useOutletContext();
-  const {navigateToItem} = useContext(GlobalContext);
+  const { navigateToItem } = useContext(GlobalContext);
 
   return (
     <Wrapper>

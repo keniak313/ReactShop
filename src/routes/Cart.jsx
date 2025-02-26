@@ -1,16 +1,11 @@
-import {
-  useOutletContext,
-  useNavigate,
-  useLocation,
-  generatePath,
-} from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import { ImportantButton } from "../styles/GlobalStyles";
-import { useContext, useEffect, useRef, useState } from "react";
-import { useImmer } from "use-immer";
+import { useContext, useEffect, useState } from "react";
 import QuantityBase from "../components/Quantity";
 import { StyledLink, FadeIn, Separator } from "../styles/GlobalStyles";
 import { GlobalContext } from "../components/GlobalContext";
+import PropTypes from "prop-types";
 
 const EmptyCart = styled.div`
   ${FadeIn}
@@ -67,7 +62,7 @@ const Info = styled.div`
 `;
 
 export default function Cart() {
-  const { products, cart, setCart } = useOutletContext();
+  const { cart } = useOutletContext();
   let [sum, setSum] = useState(0);
   useEffect(() => {
     setSum(0);
@@ -197,9 +192,8 @@ const Remove = styled.button`
 `;
 
 function CartItem({ item }) {
-  let navigate = useNavigate();
   const [amount, setAmount] = useState(item.quantity);
-  const { products, cart, setCart } = useOutletContext();
+  const { cart, setCart } = useOutletContext();
   const [close, setClose] = useState(false);
   const { navigateToItem } = useContext(GlobalContext);
 
@@ -227,7 +221,9 @@ function CartItem({ item }) {
           onClick={() => navigateToItem(item.product.id)}
         ></Img>
         <Title>{item.product.title}</Title>
-        <Price>{Number((item.product.price * item.quantity).toFixed(2))}$</Price>
+        <Price>
+          {Number((item.product.price * item.quantity).toFixed(2))}$
+        </Price>
         <Quantity amount={amount} setAmount={setAmount} />
         <Remove
           onClick={() => {
@@ -240,3 +236,7 @@ function CartItem({ item }) {
     </StyledCartItem>
   );
 }
+
+CartItem.propTypes = {
+  item: PropTypes.object,
+};

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import styled, { css } from "styled-components";
 import { useImmer } from "use-immer";
 import { Outlet, useLoaderData, Link, useNavigate } from "react-router-dom";
@@ -82,7 +82,7 @@ const Loader = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   justify-content: center;
   align-items: center;
   font-size: 2rem;
@@ -90,7 +90,7 @@ const Loader = styled.div`
   z-index: 3000;
   opacity: 0;
   pointer-events: none;
-  transition: .5s allow-discrete;
+  transition: 0.5s allow-discrete;
   &.showLoader {
     pointer-events: all;
     opacity: 1;

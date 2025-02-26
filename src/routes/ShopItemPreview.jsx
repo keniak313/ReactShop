@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  useNavigate,
-  useLocation,
-  useOutletContext,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useOutletContext, useParams } from "react-router-dom";
 import styled from "styled-components";
 import QuantityBase from "../components/Quantity";
 import AddToCartBase from "../components/AddToCart";
@@ -18,7 +13,7 @@ const Wrapper = styled.section`
   width: inherit;
   max-width: inherit;
 
-  @starting-style{
+  @starting-style {
     opacity: 0;
   }
 `;
@@ -67,7 +62,7 @@ const AddToCart = styled(AddToCartBase)`
 
 export default function ShopItemPreview() {
   const { itemId } = useParams();
-  const { products, cart, setCart } = useOutletContext();
+  const { products } = useOutletContext();
   const [amount, setAmount] = useState(1);
 
   const location = useLocation();

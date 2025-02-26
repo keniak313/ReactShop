@@ -2,7 +2,6 @@ import {
   createContext,
   useContext,
   useImperativeHandle,
-  useRef,
   useState,
 } from "react";
 import { styled, css } from "styled-components";
@@ -50,11 +49,19 @@ const Input = styled.input`
   width: 100%;
 `;
 
-export default function Form({ children, data, setData, isDynamic = false, ref }) {
+export default function Form({
+  children,
+  data,
+  setData,
+  isDynamic = false,
+  ref,
+}) {
   return (
     <FormContext.Provider value={{ data, setData, isDynamic }}>
       <section key={data.id}>
-        <Section title={data.value} ref={ref}>{children}</Section>
+        <Section title={data.value} ref={ref}>
+          {children}
+        </Section>
       </section>
     </FormContext.Provider>
   );
@@ -63,12 +70,12 @@ export default function Form({ children, data, setData, isDynamic = false, ref }
 function Section({ children, title, ref }) {
   const [open, setOpen] = useState(true);
   const { data } = useContext(FormContext);
-  
+
   useImperativeHandle(ref, () => {
     return {
       close() {
         setOpen(false);
-      }
+      },
     };
   });
 

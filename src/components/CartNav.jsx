@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { StyledNavLink, Separator, Shadow } from "../styles/GlobalStyles";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
+import PropTypes from "prop-types";
 
 const CartBtn = styled.div`
   display: flex;
@@ -60,7 +61,7 @@ const Arrow = styled.div`
   }
 `;
 
-export default function CartNav({ onClick, cart, scroll }) {
+export default function CartNav({ onClick, cart }) {
   const [openPrev, setOpenPrev] = useState(false);
   const loc = useLocation();
   function cartSizeHandler() {
@@ -114,6 +115,11 @@ export default function CartNav({ onClick, cart, scroll }) {
       </CartPreview>
     </CartBtn>
   );
+}
+
+CartNav.propTypes = {
+  onClick: PropTypes.func,
+  cart: PropTypes.array
 }
 
 const CartPreviewWrapper = styled.div`
@@ -201,6 +207,12 @@ function CartPreview({ children, cart, isOpen }) {
   );
 }
 
+CartPreview.propTypes = {
+  children: PropTypes.node,
+  cart: PropTypes.array,
+  isOpen: PropTypes.bool
+}
+
 const StyledCartPrevItem = styled.div`
   display: grid;
   grid-template-columns: 50px 1fr 1fr;
@@ -264,4 +276,12 @@ function CartPrevItem({ name, img, price, quantity, id }) {
       <Quantity>{quantity}</Quantity>
     </StyledCartPrevItem>
   );
+}
+
+CartPrevItem.propTypes = {
+  name: PropTypes.string,
+  img: PropTypes.string,
+  price: PropTypes.string,
+  quantity: PropTypes.string,
+  id: PropTypes.string,
 }

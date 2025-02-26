@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -10,8 +11,8 @@ const Wrapper = styled.div`
 const Button = styled.button`
   background-color: #ffffff;
 
-  &:disabled{
-    opacity: .5;
+  &:disabled {
+    opacity: 0.5;
     outline: none;
   }
 `;
@@ -27,7 +28,10 @@ const Number = styled.div`
 export default function Quantity({ amount, setAmount, ...props }) {
   return (
     <Wrapper {...props}>
-      <Button onClick={() => amount > 1 && setAmount((amount) => amount - 1)} disabled={amount === 1 ? true : false}>
+      <Button
+        onClick={() => amount > 1 && setAmount((amount) => amount - 1)}
+        disabled={amount === 1 ? true : false}
+      >
         <i className="bx bx-minus"></i>
       </Button>
       <Number>{amount}</Number>
@@ -37,3 +41,8 @@ export default function Quantity({ amount, setAmount, ...props }) {
     </Wrapper>
   );
 }
+
+Quantity.propTypes = {
+  amount: PropTypes.string,
+  setAmount: PropTypes.func,
+};

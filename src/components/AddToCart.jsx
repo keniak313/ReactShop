@@ -1,13 +1,18 @@
 import { useOutletContext } from "react-router-dom";
-import styled from "styled-components";
 import { ImportantButton } from "../styles/GlobalStyles";
+import PropTypes from "prop-types";
 
-export default function AddToCart({ id, isSmall = false, amount = 1, ...props }) {
+export default function AddToCart({
+  id,
+  isSmall = false,
+  amount = 1,
+  ...props
+}) {
   const { products, cart, setCart, openPopup } = useOutletContext();
   function addItem() {
     const index = products.findIndex((prod) => prod.id === id);
     const product = products[index];
-    openPopup(id)
+    openPopup(id);
     console.log("----addItem---");
     console.log(`Item: ${product.title}`);
     console.log("Adding item");
@@ -22,8 +27,7 @@ export default function AddToCart({ id, isSmall = false, amount = 1, ...props })
 
   function updateItem() {
     const index = cart.findIndex((prod) => prod.product.id === id);
-    const product = products[index];
-    openPopup(id)
+    openPopup(id);
     console.log("----updateItem---");
     console.log(`Item: ${cart[index].product.title}`);
     console.log("Updating item quantity");
@@ -36,7 +40,7 @@ export default function AddToCart({ id, isSmall = false, amount = 1, ...props })
 
   function cartHandler(e) {
     e.preventDefault();
-    
+
     console.log("----cartHandler---");
     console.log("Handling Cart");
     console.log("Current Cart");
@@ -69,4 +73,10 @@ export default function AddToCart({ id, isSmall = false, amount = 1, ...props })
       {isSmall ? `` : `Add to cart`}
     </ImportantButton>
   );
+}
+
+AddToCart.propTypes = {
+  id: PropTypes.string,
+  isSmall: PropTypes.bool,
+  amount: PropTypes.string
 }

@@ -3,12 +3,12 @@ import {
   createContext,
   useContext,
   useImperativeHandle,
-  useRef,
   useState,
 } from "react";
 import { useImmer } from "use-immer";
 import { v4 as uuid } from "uuid";
 import { Shadow } from "../styles/GlobalStyles";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -107,11 +107,11 @@ export default function Popup({ ref }) {
   );
 }
 
-function PopupItem({ name, img }) {
+function PopupItem({ img }) {
   const [isOpen, setIsOpen] = useState(true);
-  const { popups, setPopups } = useContext(PopupContext);
+  const { setPopups } = useContext(PopupContext);
 
-  function close(e) {
+  function close() {
     setIsOpen(false);
     setPopups((draft) => {
       draft.splice(0, 1);
@@ -130,3 +130,11 @@ function PopupItem({ name, img }) {
     </StyledPopup>
   );
 }
+
+Popup.propTypes = {
+  ref: PropTypes.object,
+};
+
+PopupItem.propTypes = {
+  img: PropTypes.string,
+};
